@@ -1,0 +1,125 @@
+﻿<Window x:Class="NewBieWPF.OutputWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewBieWPF"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:uc="clr-namespace:NewBieWPF.UserControlQ"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        DataContext="{StaticResource MainVM}"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Name="Window"
+        Title="Xuất hàng" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title,ElementName=Window}"></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <materialDesign:Card Grid.Row="0" Margin="5">
+                <WrapPanel>
+                    <TextBox
+                        Margin="5 5 15 10"
+                        materialDesign:HintAssist.Hint="Tên hàng hóa"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding ObjectDisplayName , UpdateSourceTrigger=PropertyChanged}"
+                    />
+                    <DatePicker
+                        Margin="5 5 15 10"
+                        materialDesign:HintAssist.Hint="Ngày xuất"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                        SelectedDate="{Binding DateOutput , UpdateSourceTrigger=PropertyChanged}"
+                    />
+                    <TextBox
+                        Margin="5 5 15 10"
+                        materialDesign:HintAssist.Hint="Số lượng"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding Count , UpdateSourceTrigger=PropertyChanged}"
+                    />
+                    <TextBox
+                        Margin="5 5 15 10"
+                        materialDesign:HintAssist.Hint="Giá xuất"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding OutputPrice , UpdateSourceTrigger=PropertyChanged}"
+                    />
+                    <ComboBox
+                        Margin="5 5 15 -4"
+                        materialDesign:HintAssist.Hint="Khách hàng"
+                        IsEditable="True"
+                        ItemsSource="{Binding CustomerWindowCommand.DisplayName}"
+                        SelectedItem="{Binding SelectedCustomer , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}">
+                    </ComboBox>
+                    <TextBox
+                        Margin="5 5 15 10"
+                        materialDesign:HintAssist.Hint="Trạng thái xuất"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding OutputStatus , UpdateSourceTrigger=PropertyChanged}"
+                    />
+                </WrapPanel>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="1" Margin="5">
+                <WrapPanel>
+                    <Button
+                        Width="100"
+                        Margin="5"
+                        Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                        Content="Thêm" 
+                        Command="{Binding AddCommand}"
+                    />
+                    <Button
+                        Width="100"
+                        Margin="5"
+                        Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                        Content="Sửa"
+                        Command="{Binding EditCommand}"
+                    />
+                    <Button
+                        Width="100"
+                        Margin="5"
+                        Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                        Content="Xóa"
+                        Command="{Binding DeleteCommand}"
+                    />
+                </WrapPanel>
+
+            </materialDesign:Card>
+            <materialDesign:Card Margin="5" Grid.Row="2" VerticalAlignment="Stretch">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Hàng hóa" DisplayMemberBinding="{Binding Object.DisplayName}"></GridViewColumn>
+                                <GridViewColumn Header="Ngày xuất" DisplayMemberBinding="{Binding Output.DateOutput}"></GridViewColumn>
+                                <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
+                                <GridViewColumn Header="Giá xuất" DisplayMemberBinding="{Binding InputInfo.OutputPrice}"></GridViewColumn>
+                                <GridViewColumn Header="Khách hàng" DisplayMemberBinding="{Binding Customer.DisplayName}"></GridViewColumn>
+                                <GridViewColumn Header="Trạng thái xuất" DisplayMemberBinding="{Binding OutputStatus}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</Window>

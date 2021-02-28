@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2388a125bdec419c92f535e99817ea6e" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="QuanLyBanHangModel.Customer" Width="1.5" PointX="6" PointY="8.5" />
+        <EntityTypeShape EntityType="QuanLyBanHangModel.Input" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="QuanLyBanHangModel.InputInfo" Width="1.5" PointX="5.25" PointY="4.125" />
+        <EntityTypeShape EntityType="QuanLyBanHangModel.Object" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="QuanLyBanHangModel.Output" Width="1.5" PointX="6" PointY="1.25" />
+        <EntityTypeShape EntityType="QuanLyBanHangModel.OutputInfo" Width="1.5" PointX="8.25" PointY="4.125" />
+        <EntityTypeShape EntityType="QuanLyBanHangModel.Suplier" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="QuanLyBanHangModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8" />
+        <EntityTypeShape EntityType="QuanLyBanHangModel.Unit" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="QuanLyBanHangModel.UserRole" Width="1.5" PointX="8.75" PointY="8.5" />
+        <EntityTypeShape EntityType="QuanLyBanHangModel.User" Width="1.5" PointX="11" PointY="8.25" />
+        <AssociationConnector Association="QuanLyBanHangModel.FK__OutputInf__IDCus__3C69FB99" />
+        <AssociationConnector Association="QuanLyBanHangModel.FK__InputInfo__IDInp__38996AB5" />
+        <AssociationConnector Association="QuanLyBanHangModel.FK__InputInfo__IDObj__398D8EEE" />
+        <AssociationConnector Association="QuanLyBanHangModel.FK__Object__IDSuplie__3A81B327" />
+        <AssociationConnector Association="QuanLyBanHangModel.FK__Object__IDUnit__3B75D760" />
+        <AssociationConnector Association="QuanLyBanHangModel.FK__OutputInf__IDObj__3D5E1FD2" />
+        <AssociationConnector Association="QuanLyBanHangModel.FK__OutputInfo__ID__2E1BDC42" />
+        <AssociationConnector Association="QuanLyBanHangModel.FK__Users__IDRole__3E52440B" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
